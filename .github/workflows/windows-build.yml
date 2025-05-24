@@ -17,13 +17,13 @@ jobs:
       uses: NuGet/setup-nuget@v1.2.0
 
     - name: Restore NuGet packages
-      run: nuget restore DigitalWellbeingWPF.sln
+      run: nuget restore DigitalWellbeing.sln
 
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.3.1
 
     - name: Build solution
-      run: msbuild DigitalWellbeingWPF.sln /p:Configuration=Release
+      run: msbuild DigitalWellbeing.sln /p:Configuration=Release
 
     - name: Upload EXE
       uses: actions/upload-artifact@v4
