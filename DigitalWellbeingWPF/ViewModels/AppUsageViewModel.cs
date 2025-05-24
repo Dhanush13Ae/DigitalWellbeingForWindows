@@ -26,7 +26,7 @@ namespace DigitalWellbeingWPF.ViewModels
     public class AppUsageViewModel : INotifyPropertyChanged
     {
         #region Configurations
-        public static readonly int PrevDaysToLoad = 7;
+        public static readonly int PrevDaysToLoad = 365;
         public static readonly int MinimumPieChartPercentage = 10;
         #endregion
 
