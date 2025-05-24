@@ -1,23 +1,26 @@
 name: Build DigitalWellbeingWPF
 
 on:
+  workflow_dispatch:  # manual trigger
   push:
     branches: [ master ]
-  workflow_dispatch:
 
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1.1
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.2.0
 
     - name: Restore NuGet packages
       run: nuget restore DigitalWellbeingWPF.sln
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.3.1
 
     - name: Build solution
       run: msbuild DigitalWellbeingWPF.sln /p:Configuration=Release
@@ -26,4 +29,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: DigitalWellbeingEXE
-        path: DigitalWellbeingWPF\bin\Release\
+        path: DigitalWellbeingWPF/bin/Release/
