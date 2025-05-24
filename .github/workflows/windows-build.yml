@@ -1,7 +1,7 @@
 name: Build DigitalWellbeingWPF
 
 on:
-  workflow_dispatch:  # manual trigger
+  workflow_dispatch:
   push:
     branches: [ master ]
 
@@ -26,7 +26,7 @@ jobs:
       run: msbuild DigitalWellbeingWPF.sln /p:Configuration=Release
 
     - name: Upload EXE
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: DigitalWellbeingEXE
         path: DigitalWellbeingWPF/bin/Release/
